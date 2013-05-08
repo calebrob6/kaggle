@@ -25,5 +25,6 @@ for fname in dirList:
 print "Finished setting up images in %s seconds" % (time.time()-startTime)
 print "Starting training"
 model = cv2.createLBPHFaceRecognizer(radius=2,neighbors=8)
+model.setInt("recordFaces",0)
 model.train(np.asarray(images),np.asarray(labels))
 print "Finished training model in %s seconds" % (time.time()-startTime)
