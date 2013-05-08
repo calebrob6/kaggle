@@ -12,6 +12,7 @@ images = []
 
 DATA_DIR = "./data/"
 TRAINING_DIR = "./training/"
+IMAGES_DIR = "./images/"
 
 
 startTime = time.time()
@@ -28,3 +29,11 @@ model = cv2.createLBPHFaceRecognizer(radius=2,neighbors=8)
 model.setInt("recordFaces",0)
 model.train(np.asarray(images),np.asarray(labels))
 print "Finished training model in %s seconds" % (time.time()-startTime)
+
+f=open("results.txt","w")
+dirList=os.listdir(IMAGES_DIR)
+for fname in dirList:      
+    image = cv2.imread(IMAGES_DIR+fname, cv2.IMREAD_GRAYSCALE)
+    [pLabel, pConfidence] = model.predict(image)
+    f.write(fname + " -- " + pLabel)
+f.close()
