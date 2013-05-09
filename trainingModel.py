@@ -30,7 +30,7 @@ f.close()
 print "Finished reading file information in %s seconds\n" % (time.time()-startTime)
 
 for l in range(len(labels)):
-    cv2.imwrite(TRAINING_DIR+str(l)+str(labels[l])+".png", images[l])
+    cv2.imwrite(TRAINING_DIR+str(labels[l])+"_"+str(l)+".png", images[l])
 
 print "Finished writing training information\n"
 print "Time taken: %s\n" % (time.time()-startTime)
