@@ -27,10 +27,9 @@ IMAGES_DIR = "./images/"
 
 startTime = time.time()
 print "Setting up data for training"
-dirList=os.listdir(TRAINING_DIR)
-for fname in dirList:
-    label = int(fname.split("_")[0])        
-    image = cv2.imread(TRAINING_DIR+fname, cv2.IMREAD_GRAYSCALE)
+for fname in range(7):
+    label = int(fname)       
+    image = cv2.imread("mean"+str(fname)+".png", cv2.IMREAD_GRAYSCALE)
     labels.append(label)
     images.append(image)
 print "Finished setting up images in %s seconds" % (time.time()-startTime)
